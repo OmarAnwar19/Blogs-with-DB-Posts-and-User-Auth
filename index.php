@@ -24,7 +24,7 @@
         <div class="container">
             <?php if (empty($posts)) { ?>
                 <h6 class="center grey-text">No posts yet!</h4>
-            <? } else { ?>
+            <?php } else { ?>
             <div class="row">
                     <?php foreach($posts as $post){ ?>
                         <div class="col s6 md3">

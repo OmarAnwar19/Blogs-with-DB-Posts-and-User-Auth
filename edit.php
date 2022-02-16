@@ -4,12 +4,24 @@
     require("./config/db.php");
 
     if(!(isset($_SESSION["auth"]))) {
-        $_SESSION["message"] = "Please log in to create a post.";
+        $_SESSION["message"] = "Insufficient permissions.";
         header("Location: index.php");
         die();
     }
 
-    $title = $body = "";
+    if (isset($_POST["save"])) {
+        $post_id = mysqli_real_escape_string($conn, $_POST["post_id"]);
+    } else {
+        $post_id =  $_GET["id"];
+    }
+
+    $sql = "SELECT * FROM posts WHERE id=$post_id;";
+    $result = mysqli_query($conn, $sql);
+    $post = mysqli_fetch_assoc($result);
+    $post_id = $post["id"];
+
+    $title = $post["title"];
+    $body = $post["body"];
 
     $errors = array("title"=>"", "body"=>"");
 
@@ -33,16 +45,16 @@
     }
 
     if(!(array_filter($errors))) {
+        $post_id = mysqli_real_escape_string($conn, $_POST["post_id"]);
         $title = mysqli_real_escape_string($conn, $_POST["title"]);
         $body = mysqli_real_escape_string($conn, $_POST["body"]);
-        $id = $_SESSION["id"];
     
-        $sql = "INSERT INTO posts (user_id, title, body) VALUES ('$id', '$title', '$body');";
+        $sql = "UPDATE posts SET title='$title', body='$body' WHERE id='$post_id';";
     
         if(mysqli_query($conn, $sql)){
             session_start();
             
-            $_SESSION["message"] = "Post created successfully!";
+            $_SESSION["message"] = "Post edited successfully!";
             header("Location: index.php");
         } else {
             echo("Query error: ".mysqli_error($conn));
@@ -56,19 +68,20 @@
     <?php include('templates/header.php'); ?>
     
     <section class="container brand-text">
-        <h4 class="center">Create a Post!</h4>
-        <form action="post.php" class="white post-form" method="POST">
+        <h4 class="center">Edit Post:</h4>
+        <form action="edit.php" class="white post-form" method="POST">
 
             <label for="title">Title</label>
-            <textarea type="text" name="title" placeholder="Type here..." class="title-text"></textarea>
+            <textarea type="text" name="title" placeholder="Type here..." class="title-text"><?php echo $title;?></textarea>
             <div class="red-text"><?php echo $errors["title"];?></div>
 
             <label for="body">Body</label>
-            <textarea type="text" name="body" placeholder="Type here..." class="body-text"></textarea>
+            <textarea type="text" name="body" placeholder="Type here..." class="body-text"><?php echo $body;?></textarea>
             <div class="red-text"><?php echo $errors["body"];?></div>
 
             <div class="center">
-                <input type="submit" name="submit" value="Post" class="btn brand z-depth-0">
+                <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
+                <input type="submit" name="save" value="save" class="btn brand z-depth-0">
             </div>
         </form>
     </section>

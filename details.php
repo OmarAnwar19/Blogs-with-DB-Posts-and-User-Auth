@@ -12,9 +12,9 @@
     }
 
     if (isset($_POST["delete"])) {
-        $del_id = mysqli_real_escape_string($conn, $_POST["del_id"]);
+        $post_id = mysqli_real_escape_string($conn, $_POST["post_id"]);
 
-        $sql =  "DELETE FROM `posts` WHERE id='$del_id'";
+        $sql =  "DELETE FROM `posts` WHERE id='$post_id'";
         if(mysqli_query($conn, $sql)) {
             $_SESSION['message'] = 'Post deleted.';
 
@@ -23,6 +23,11 @@
         } else {
             echo("Query error: ".mysqli_error($conn));
         }
+    }
+
+    if (isset($_POST["edit"])) {
+        $post_id = mysqli_real_escape_string($conn, $_POST["post_id"]);
+        header("Location: edit.php?id=$post_id");
     }
 
 ?>
@@ -50,9 +55,13 @@
         <h4 class="center brand-text">Log-in to view posts</h4>
     <?php } ?>
     <?php if ($post["user_id"] === $_SESSION["id"]) { ?>
+        <div class="container">
+            
+        </div>
         <form action="details.php" method="POST">
-                <input type="hidden" name="del_id" value="<?php echo $post['id'];?>">
-                <input type="submit" name="delete" value="delete" class="btn brand z-depth-0">
+            <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
+            <input type="submit" name="delete" value="delete" class="btn brand z-depth-0">
+            <input type="submit" name="edit" value="edit" class="btn brand z-depth-0">
         </form>
     <?php } ?>
     <p><a href="index.php">Go back to all posts.</a></p>
