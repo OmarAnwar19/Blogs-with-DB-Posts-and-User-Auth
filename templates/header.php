@@ -1,27 +1,10 @@
 <head>
-<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs.com</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <style type="text/css">
-        .brand {
-            background: #A267AC !important;
-        }
-        .brand-text {
-            color: #A267AC !important;
-        }
-        form {
-            max-width: 460px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-        footer {
-            background-color: #A267AC !important;
-            padding: 1em;
-        }
-    </style>
+    <link rel="stylesheet" href="public/style.css">
 </head>
     <body class="grey lighten-4">
         <nav class="white z-depth-0">
