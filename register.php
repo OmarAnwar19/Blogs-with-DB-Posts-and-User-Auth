@@ -24,16 +24,6 @@
         $username = $_POST["username"];
     }
 
-    if (empty($_POST["email"])) {
-        $errors["email"] = "Please enter an email <br />";
-    } else {
-        if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-            $errors["email"] = "Please enter a valid email <br />";
-        };
-
-        $email = $_POST["email"];
-    }
-
     if (empty($_POST["password"])) {
         $errors["password"] = "Please enter a password <br />";
     } else {
@@ -44,12 +34,22 @@
         $password = $_POST["password"];
     }
 
-    if (checkUser($conn, $_POST["email"], $_POST["username"])) {
-        $errors["head"] = "A user with that username or email already exists <br />";
-    } else {        
+    if (empty($_POST["email"])) {
+        $errors["email"] = "Please enter an email <br />";
+    } else {
+        if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            $errors["email"] = "Please enter a valid email <br />";
+        };
+
         $email = $_POST["email"];
-        $password = $_POST["password"];
     }
+
+    if (checkUser($conn, $email, $username)) {
+        $errors["head"] = "A user with that username or email already exists <br />";
+    } else {
+        $email = $_POST["email"] ?? "";
+        $password = $_POST["password"] ?? "";
+    }     
 
     if(!(array_filter($errors))) {
         $username = mysqli_real_escape_string($conn, $_POST["username"]);
