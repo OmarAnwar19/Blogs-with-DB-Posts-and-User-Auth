@@ -9,7 +9,7 @@
     <body class="grey lighten-4">
         <nav class="white z-depth-0">
             <div class="container">
-                <a href="index.php" class="left brand-logo brand-text">Blogs.com</a>
+                <a href="index.php" class="left brand-logo brand-text">blog.com</a>
                 <ul id="nav-mobile" class="right hide-on-small-and-down">
                     <li><a href="post.php" class="btn brand z-depth-0">Create a Post</a></li>     
                     <?php if (!isset($_SESSION["auth"])) {?>
