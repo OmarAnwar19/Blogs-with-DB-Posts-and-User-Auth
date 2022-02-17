@@ -5,6 +5,5 @@
             <div class="center white-text">Not logged in.</div>
         <?php } ?>  
     </footer>
-
 </body>
     

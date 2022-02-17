@@ -64,7 +64,7 @@
             <input type="submit" name="edit" value="edit" class="btn brand z-depth-0">
         </form>
     <?php } ?>
-    <p><a href="index.php">Go back to all posts.</a></p>
+    <p class="center brand-text"><a href="index.php">Go back to all posts.</a></p>
     </div>
 
     <?php include("templates/footer.php"); ?>
