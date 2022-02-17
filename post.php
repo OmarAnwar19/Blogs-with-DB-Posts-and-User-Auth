@@ -5,7 +5,7 @@
 
     if(!(isset($_SESSION["auth"]))) {
         $_SESSION["message"] = "Please log in to create a post.";
-        header("Location: index.php");
+        header("Location: index");
         die();
     }
 
@@ -43,7 +43,7 @@
             session_start();
             
             $_SESSION["message"] = "Post created successfully!";
-            header("Location: index.php");
+            header("Location: index");
         } else {
             echo("Query error: ".mysqli_error($conn));
         }
@@ -57,7 +57,7 @@
     
     <section class="container brand-text">
         <h4 class="center">Create a Post!</h4>
-        <form action="post.php" class="white post-form" method="POST">
+        <form action="post" class="white post-form" method="POST">
 
             <label for="title">Title</label>
             <textarea type="text" name="title" placeholder="Type here..." class="title-text"></textarea>

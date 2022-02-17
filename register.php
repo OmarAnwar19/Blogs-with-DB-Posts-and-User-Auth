@@ -4,7 +4,7 @@
 
     if(isset($_SESSION["auth"])) {
         http_response_code(404);
-        header("Location: index.php");
+        header("Location: index");
         die();
     }
 
@@ -66,7 +66,7 @@
             session_start();
             
             $_SESSION["message"] = "Registered successfully, you can now Log-in!";
-            header("Location: index.php");
+            header("Location: index");
         } else {
             echo("Query error: ".mysqli_error($conn));
         }
@@ -85,7 +85,7 @@
 
     <section class="container brand-text">
         <h4 class="center">Register</h4>
-        <form action="register.php" class="white" method="POST">
+        <form action="register" class="white" method="POST">
             <div class="red-text"><?php echo $errors["head"];?></div>
 
             <label for="username">Username</label>
@@ -103,7 +103,7 @@
             <div class="center">
                 <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
             </div>
-            <p class="center">Already have an account? <a href="login.php">Login</a></p>
+            <p class="center">Already have an account? <a href="login">Login</a></p>
         </form>
     </section>
 

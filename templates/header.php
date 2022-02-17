@@ -9,14 +9,14 @@
     <body class="grey lighten-4">
         <nav class="white z-depth-0">
             <div class="container">
-                <a href="index.php" class="left brand-logo brand-text">blog.com</a>
+                <a href="index" class="left brand-logo brand-text">blog.com</a>
                 <ul id="nav-mobile" class="right hide-on-small-and-down">
-                    <li><a href="post.php" class="btn brand z-depth-0">Create a Post</a></li>     
+                    <li><a href="post" class="btn brand z-depth-0">Create a Post</a></li>     
                     <?php if (!isset($_SESSION["auth"])) {?>
-                        <li><a href="login.php" class="btn brand z-depth-0">Login</a></li>
-                        <li><a href="register.php" class="btn brand z-depth-0">Register</a></li>
+                        <li><a href="login" class="btn brand z-depth-0">Login</a></li>
+                        <li><a href="register" class="btn brand z-depth-0">Register</a></li>
                     <?php } else { ?> 
-                        <li><a href="logout.php" class="btn brand z-depth-0">Logout</a></li>
+                        <li><a href="logout" class="btn brand z-depth-0">Logout</a></li>
                     <?php } ?>  
                 </ul>
             </div>

@@ -3,7 +3,7 @@
 
     if(!(isset($_SESSION["auth"]))) {
         http_response_code(404);
-        header("Location: index.php");
+        header("Location: index");
         die();
     }
 
@@ -12,6 +12,6 @@
     unset($_SESSION["id"]);
 
     $_SESSION["message"] = "Logged out succesfully!";
-    header("Location: index.php");
+    header("Location: index");
 
 ?>

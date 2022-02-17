@@ -5,7 +5,7 @@
 
     if(!(isset($_SESSION["auth"]))) {
         $_SESSION["message"] = "Insufficient permissions.";
-        header("Location: index.php");
+        header("Location: index");
         die();
     }
 
@@ -55,7 +55,7 @@
             session_start();
             
             $_SESSION["message"] = "Post edited successfully!";
-            header("Location: index.php");
+            header("Location: index");
         } else {
             echo("Query error: ".mysqli_error($conn));
         }
@@ -69,7 +69,7 @@
     
     <section class="container brand-text">
         <h4 class="center">Edit Post:</h4>
-        <form action="edit.php" class="white post-form" method="POST">
+        <form action="edit" class="white post-form" method="POST">
 
             <label for="title">Title</label>
             <textarea type="text" name="title" placeholder="Type here..." class="title-text"><?php echo $title;?></textarea>

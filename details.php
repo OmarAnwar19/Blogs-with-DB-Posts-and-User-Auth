@@ -18,7 +18,7 @@
         if(mysqli_query($conn, $sql)) {
             $_SESSION['message'] = 'Post deleted.';
 
-            header("Location: index.php");
+            header("Location: index");
             die();
         } else {
             echo("Query error: ".mysqli_error($conn));
@@ -27,7 +27,7 @@
 
     if (isset($_POST["edit"])) {
         $post_id = mysqli_real_escape_string($conn, $_POST["post_id"]);
-        header("Location: edit.php?id=$post_id");
+        header("Location: edit?id=$post_id");
     }
 
 ?>
@@ -58,13 +58,13 @@
         <div class="container">
             
         </div>
-        <form action="details.php" method="POST">
+        <form action="details" method="POST">
             <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
             <input type="submit" name="delete" value="delete" class="btn brand z-depth-0">
             <input type="submit" name="edit" value="edit" class="btn brand z-depth-0">
         </form>
     <?php } ?>
-    <p class="center brand-text"><a href="index.php">Go back to all posts.</a></p>
+    <p class="center brand-text"><a href="index">Go back to all posts.</a></p>
     </div>
 
     <?php include("templates/footer.php"); ?>

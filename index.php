@@ -40,7 +40,7 @@
     <?php if (isset($_SESSION["auth"])) { ?>
         <h4 class="center brand-text">Posts</h4>
         <div class="search-container">
-            <form action="index.php" method="GET" id="search-form">
+            <form action="index" method="GET" id="search-form">
                 <label for="search-input">Search for: </label>
                 <input type="search" name="search-input" placeholder="keyword...">
                     
@@ -66,7 +66,7 @@
                                     <h6><i><?php echo getPoster($conn, htmlspecialchars($post['user_id']));?></i></h6>
                                 </div>
                                 <div class="card-action right-align">
-                                    <a class="brand-text" href="details.php?id=<?php echo $post['id']?>">Read</a>
+                                    <a class="brand-text" href="details?id=<?php echo $post['id']?>">Read</a>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
     <?php } ?>
 
     <?php if (isset($_GET["search"])) { ?>
-        <p class="center brand-text"><a href="index.php">Go back to all posts.</a></p>
+        <p class="center brand-text"><a href="index">Go back to all posts.</a></p>
     <?php } ?>
 
     <?php include('templates/footer.php'); ?>

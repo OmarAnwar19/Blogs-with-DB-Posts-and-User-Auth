@@ -4,7 +4,7 @@
 
     if(isset($_SESSION["auth"])) {
         http_response_code(404);
-        header("Location: index.php");
+        header("Location: index");
         die();
     }
 
@@ -53,7 +53,7 @@
                 $_SESSION['id'] = $user["id"];
 
                 $_SESSION["message"] = "Logged in successfully, welcome ".$_SESSION['username']."!";
-                header("Location: index.php");
+                header("Location: index");
             }
         }
     }
@@ -65,7 +65,7 @@
         if ($result) {
             return(mysqli_fetch_assoc($result));
         } else {
-            header("Location: login.php");
+            header("Location: login");
         }
     }
 
@@ -77,7 +77,7 @@
 
     <section class="container brand-text">
         <h4 class="center">Login</h4>
-        <form action="login.php" class="white" method="POST">
+        <form action="login" class="white" method="POST">
             <div class="red-text"><?php echo $errors["head"];?></div>
 
             <label for="email">Email</label>
@@ -91,7 +91,7 @@
             <div class="center">
                 <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
             </div>
-            <p class="center">Don't have an account? <a href="register.php">Register</a></p>
+            <p class="center">Don't have an account? <a href="register">Register</a></p>
         </form>
     </section>
 
