@@ -37,3 +37,11 @@ textarea {
 .body-text {
   min-height: 250px;
 }
+
+.search-container {
+  display: flex;
+}
+
+.select-search {
+  margin: 5px 0 10px 0;
+}

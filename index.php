@@ -44,8 +44,7 @@
                 <label for="search-input">Search for: </label>
                 <input type="search" name="search-input" placeholder="keyword...">
                     
-                <label for="options">by</label>
-                <select class="browser-default" name="options">
+                <select class="browser-default select-search" name="options">
                     <option value="title">title</option>
                     <option value="username">username</option>
                 </select>
